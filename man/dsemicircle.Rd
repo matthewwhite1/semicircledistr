@@ -7,7 +7,7 @@
 dsemicircle(x, R)
 }
 \arguments{
-\item{x}{A numeric value representing the point at which the PDF is evaluated. It must lie in the range \(\link{-R, R}\).}
+\item{x}{A numeric value representing the point at which the PDF is evaluated. It must lie in the range \eqn{[-R, R]}.}
 
 \item{R}{A positive numeric value representing the radius parameter of the semicircle distribution.}
 }
@@ -15,12 +15,12 @@ dsemicircle(x, R)
 A numeric value representing the PDF of the semicircle distribution at point \code{x}.
 }
 \description{
-This function computes the probability density function (PDF) of the semicircle distribution with a given radius \( R \).
+This function computes the probability density function (PDF) of the semicircle distribution with a given radius \eqn{R}.
 }
 \details{
 The semicircle distribution is defined as:
-\deqn{f(x) = \frac{2}{\pi R^2} \sqrt{R^2 - x^2}} for \(-R \leq x \leq R\),
-and \deqn{f(x) = 0} for \(|x| > R\).
+\deqn{f(x) = \frac{2}{\pi R^2} \sqrt{R^2 - x^2}} for \eqn{-R \leq x \leq R},
+and \deqn{f(x) = 0} for \eqn{|x| > R}.
 }
 \examples{
 dsemicircle(0, 1)   # Should return 2/pi
