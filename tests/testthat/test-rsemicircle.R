@@ -36,7 +36,7 @@ test_that("rsemicircle produces an error when num is negative", {
   expect_error(rsemicircle(-10, 7))
 })
 
-test_that("rsemicircle produces an error when n is negative", {
-  ## Try to generate 10 random values with n = -7
+test_that("rsemicircle produces an error when R is negative", {
+  ## Try to generate 10 random values with R = -7
   expect_error(rsemicircle(10, -7))
 })

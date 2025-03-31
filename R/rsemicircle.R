@@ -9,5 +9,23 @@ rsemicircle <- function(n, R) {
     stop("n must be positive")
   }
 
-  ## TODO compute random of distribution (i.e. using runif and inverse cdf)
+  ## I don't think there is a closed form solution.
+  ## The alternative is to generate random points within rectangle enclosing PDF
+  ## and reject until we get one inside the distribution.
+
+  # get the height of the enclosing rectangle
+  height <- dsemicircle(0, R)
+  result <- numeric(n)
+
+  i <- 1
+  while (i <= n) {
+    x <- runif(1, -R, R)
+    y <- runif(1, 0, height)
+    if (y <= dsemicircle(x, R)) {
+      result[i] <- x
+      i <- i + 1
+    }
+  }
+
+  return(result)
 }
