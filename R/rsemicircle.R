@@ -1,4 +1,4 @@
-rsemicircle <- function(n, R) {
+rsemicircle <- function(n, R, a = 0) {
   if (R <= 0) {
     stop("R must be positive.")
   }
@@ -22,7 +22,7 @@ rsemicircle <- function(n, R) {
     x <- runif(1, -R, R)
     y <- runif(1, 0, height)
     if (y <= dsemicircle(x, R)) {
-      result[i] <- x
+      result[i] <- x + a
       i <- i + 1
     }
   }

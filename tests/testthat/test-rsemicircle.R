@@ -40,3 +40,12 @@ test_that("rsemicircle produces an error when R is negative", {
   ## Try to generate 10 random values with R = -7
   expect_error(rsemicircle(10, -7))
 })
+
+test_that("rsemicircle produces random values within the correct range with 'a'", {
+  ## Generate 20 random values
+  x <- rsemicircle(20, 7, 10)
+
+  ## Check that the values are within the correct range
+  expect_true(all(x >= 3))
+  expect_true(all(x <= 17))
+})
