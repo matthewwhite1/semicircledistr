@@ -36,16 +36,16 @@ Density, distribution function, quantile function, and random generation for the
 
 This distribution is used to model random variables that follow the shape of a semicircle.
 
-The semicircle distribution is defined over the interval \(\link{a - R, a + R}\), where
+The semicircle distribution is defined over the interval \eqn{[a - R, a + R]}, where
 \code{R} is the radius and \code{a} is the shift. The probability density function is:
 
 \deqn{f(x) = \frac{2}{\pi R^2} \sqrt{R^2 - (x - a)^2},}
-for \(|x - a| \leq R\), and 0 otherwise.
+for \eqn{|x - a| \leq R}, and 0 otherwise.
 
 The cumulative distribution function is the integral of the density function.
 
-The quantile function gives the smallest value \(x\) such that the cumulative probability
-\(F(x)\) is greater than or equal to a given probability \(p\).
+The quantile function gives the smallest value \code{x} such that the cumulative probability
+\code{F(x)} is greater than or equal to a given probability \code{p}.
 }
 \examples{
 # Compute the density at x = 0 for a semicircle with radius 1

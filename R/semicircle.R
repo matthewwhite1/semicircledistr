@@ -20,16 +20,16 @@
 #' @param n The number of random samples to generate (for \code{rsemicircle}).
 #'
 #' @details
-#' The semicircle distribution is defined over the interval \([a - R, a + R]\), where
+#' The semicircle distribution is defined over the interval \eqn{[a - R, a + R]}, where
 #' `R` is the radius and `a` is the shift. The probability density function is:
 #'
 #' \deqn{f(x) = \frac{2}{\pi R^2} \sqrt{R^2 - (x - a)^2},}
-#' for \(|x - a| \leq R\), and 0 otherwise.
+#' for \eqn{|x - a| \leq R}, and 0 otherwise.
 #'
 #' The cumulative distribution function is the integral of the density function.
 #'
-#' The quantile function gives the smallest value \(x\) such that the cumulative probability
-#' \(F(x)\) is greater than or equal to a given probability \(p\).
+#' The quantile function gives the smallest value `x` such that the cumulative probability
+#' `F(x)` is greater than or equal to a given probability `p`.
 #'
 #' @return
 #' \describe{
