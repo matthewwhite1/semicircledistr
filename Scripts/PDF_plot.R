@@ -66,4 +66,7 @@ ggplot(pdf_df_shift, aes(xs, values, color = labels)) +
   scale_color_manual(values = c("red", "cyan", "purple")) +
   theme_bw() +
   scale_x_continuous("", breaks = seq(-5, 5, by = 1)) +
-  ylab("")
+  ylab("") +
+  theme(plot.title = element_text(hjust = 0.5),
+        legend.position = c(0.8, 0.8),
+        legend.title = element_blank())
