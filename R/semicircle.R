@@ -73,8 +73,14 @@ NULL
 #' @seealso \code{\link{semicircle}} for the full documentation on the Wigner semicircle distribution.
 #' @export
 dsemicircle <- function(x, R, a = 0) {
+  if (!is.numeric(x)) {
+    stop("x must be numeric.")
+  }
   if (R <= 0) {
     stop("R must be positive.")
+  }
+  if (!is.numeric(a)) {
+    stop("a must be numeric.")
   }
   ifelse(abs(x - a) > R, 0, (2 / (pi * R^2)) * sqrt(R^2 - (x - a)^2))
 }
@@ -91,8 +97,14 @@ dsemicircle <- function(x, R, a = 0) {
 #' @seealso \code{\link{semicircle}} for the full documentation on the Wigner semicircle distribution.
 #' @export
 psemicircle <- function(x, R, a = 0) {
+  if (!is.numeric(x)) {
+    stop("x must be numeric.")
+  }
   if (R <= 0) {
     stop("R must be positive.")
+  }
+  if (!is.numeric(a)) {
+    stop("a must be numeric.")
   }
   result <- numeric(length(x))
   for (i in 1:length(x)) {
@@ -117,6 +129,15 @@ psemicircle <- function(x, R, a = 0) {
 #' @seealso \code{\link{semicircle}} for the full documentation on the Wigner semicircle distribution.
 #' @export
 qsemicircle <- function(p, R, a = 0) {
+  if (!is.numeric(p)) {
+    stop("x must be numeric.")
+  }
+  if (R <= 0) {
+    stop("R must be positive.")
+  }
+  if (!is.numeric(a)) {
+    stop("a must be numeric.")
+  }
   quantile_fn <- function(prob) {
     sapply(prob, function(pi) {
       if (pi == 0) return(a - R)
@@ -140,8 +161,14 @@ qsemicircle <- function(p, R, a = 0) {
 #' @seealso \code{\link{semicircle}} for the full documentation on the Wigner semicircle distribution.
 #' @export
 rsemicircle <- function(n, R, a = 0) {
+  if (!is.numeric(n)) {
+    stop("x must be numeric.")
+  }
   if (R <= 0) {
     stop("R must be positive.")
+  }
+  if (!is.numeric(a)) {
+    stop("a must be numeric.")
   }
   u <- runif(n)  # generate n uniform values between 0 and 1
   qsemicircle(u, R, a)  # apply the inverse CDF (quantile function)
