@@ -1,8 +1,8 @@
 #' Semicircle Distribution Cumulative Density Function (CDF)
 #'
-#' This function computes the cumulative density function (CDF) of the semicircle distribution with a given radius \( R \).
+#' This function computes the cumulative density function (CDF) of the semicircle distribution with a given radius \eqn{R}.
 #'
-#' @param x A numeric value representing the point at which the CDF is evaluated. It must lie in the range \([-R, R]\).
+#' @param x A numeric value representing the point at which the CDF is evaluated. It must lie in the range \eqn{[-R, R]}.
 #' @param R A positive numeric value representing the radius parameter of the semicircle distribution.
 #'
 #' @return A numeric value representing the CDF of the semicircle distribution at point `x`.
