@@ -2,3 +2,6 @@
 
 export(dsemicircle)
 export(psemicircle)
+export(qsemicircle)
+export(rsemicircle)
+importFrom(stats,uniroot)
