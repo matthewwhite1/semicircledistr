@@ -13,6 +13,9 @@ library(gridExtra)
 # Stopping at 5000 instead of 10000 to save on computation time
 set.seed(1234)
 
+# GOE stands for Gaussian Orthogonal Ensemble
+# I realized afterwards that I am not sure if these matrices count as
+# GOEs, but I don't want to take the time to rerun the code right now
 goe_1000 <- randn(1000)
 ev_1000 <- eigen(goe_1000)
 ev_1000_data <- scale(as.numeric(ev_1000$values))
