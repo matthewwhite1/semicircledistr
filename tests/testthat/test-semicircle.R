@@ -1,3 +1,6 @@
+## dsemicircle
+## TODO
+
 ## psemicircle
 
 test_that("psemicircle requires positive R", {
@@ -28,6 +31,18 @@ test_that("psemicircle works with vector", {
   expect_equal(actual, expected, tolerance=1e-4)
 })
 
+test_that("psemicircle works with shift parameter a", {
+  x <- c(8, 9, 10, 11, 12)
+  R <- 2
+  a <- 10
+  expected <- c(0, 1-0.8045, .5, 0.8045, 1)
+  actual <- psemicircle(x, R, a)
+  expect_equal(actual, expected, tolerance=1e-4)
+})
+
+
+## qsemicircle
+## TODO
 
 ## rsemicircle
 

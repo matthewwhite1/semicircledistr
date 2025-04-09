@@ -108,11 +108,11 @@ psemicircle <- function(x, R, a = 0) {
   }
   result <- numeric(length(x))
   for (i in 1:length(x)) {
-    val <- x[i]
-    if (abs(val - a) > R) {
+    val <- x[i] - a
+    if (abs(val) > R) {
       stop("x must be within radius.")
     }
-    result[i] <- 0.5 + (val * sqrt(R^2 - (val - a)^2)) / (pi * R^2) + asin((val - a) / R) / pi
+    result[i] <- 0.5 + (val * sqrt(R^2 - val^2)) / (pi * R^2) + asin(val / R) / pi
   }
   return(result)
 }
