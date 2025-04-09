@@ -1,5 +1,42 @@
 ## dsemicircle
-## TODO
+test_that("dsemicircle requires positive R", {
+  x <- 1
+  R <- -1
+  expect_error(dsemicircle(x, R), "R must be positive.")
+})
+
+test_that("x outside radius has probability of 0", {
+  x <- -1.6
+  R <- 1.5
+  expected <- 0
+  actual <- dsemicircle(x, R)
+  expect_equal(actual, expected, tolerance=1e-4)
+})
+
+test_that("dsemicircle works with single input", {
+  x <- 1
+  R <- 2
+  expected <- 0.27566
+  actual <- dsemicircle(x, R)
+  expect_equal(actual, expected, tolerance=1e-4)
+})
+
+test_that("dsemicircle works with vector", {
+  x <- c(-2, -1, 0, 1, 2)
+  R <- 2
+  expected <- c(0, 0.27566, .31831, 0.27566, 0)
+  actual <- dsemicircle(x, R)
+  expect_equal(actual, expected, tolerance=1e-4)
+})
+
+test_that("dsemicircle works with shift parameter a", {
+  x <- c(8, 9, 10, 11, 12)
+  R <- 2
+  a <- 10
+  expected <- c(0, 0.2757, .3183, 0.2757, 0)
+  actual <- dsemicircle(x, R, a)
+  expect_equal(actual, expected, tolerance=1e-4)
+})
 
 ## psemicircle
 
@@ -42,7 +79,43 @@ test_that("psemicircle works with shift parameter a", {
 
 
 ## qsemicircle
-## TODO
+
+test_that("qsemicircle requires positive R", {
+  p <- 1
+  R <- -1
+  expect_error(qsemicircle(p, R), "R must be positive.")
+})
+
+test_that("p must be between 0 and 1", {
+  p <- -1.6
+  R <- 1.5
+  expect_error(qsemicircle(p, R), "p must be between 0 and 1.")
+})
+
+test_that("qsemicircle works with single input", {
+  p <- 0.8045
+  R <- 2
+  expected <- 1
+  actual <- qsemicircle(p, R)
+  expect_equal(actual, expected, tolerance=1e-4)
+})
+
+test_that("qsemicircle works with vector", {
+  p <- c(0, 1-0.8045, .5, 0.8045, 1)
+  R <- 2
+  expected <- c(-2, -1, 0, 1, 2)
+  actual <- qsemicircle(p, R)
+  expect_equal(actual, expected, tolerance=1e-4)
+})
+
+test_that("qsemicircle works with shift parameter a", {
+  p <- c(0, 1-0.8045, .5, 0.8045, 1)
+  R <- 2
+  a <- 10
+  expected <- c(8, 9, 10, 11, 12)
+  actual <- qsemicircle(p, R, a)
+  expect_equal(actual, expected, tolerance=1e-4)
+})
 
 ## rsemicircle
 

@@ -129,8 +129,8 @@ psemicircle <- function(x, R, a = 0) {
 #' @seealso \code{\link{semicircle}} for the full documentation on the Wigner semicircle distribution.
 #' @export
 qsemicircle <- function(p, R, a = 0) {
-  if (!is.numeric(p)) {
-    stop("x must be numeric.")
+  if (!is.numeric(p) || any(p < 0) || any(p > 1)) {
+    stop("p must be between 0 and 1.")
   }
   if (R <= 0) {
     stop("R must be positive.")
