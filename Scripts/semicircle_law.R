@@ -47,7 +47,11 @@ g3 <- ggplot(ev_5000_df, aes(ev)) +
   scale_y_continuous("Density", breaks = seq(0, 0.5, by = 0.1), limits = c(0, 0.5)) +
   xlab("Scaled Eigenvalues for N = 5000")
 
+jpeg("Plots/SemiLaw_NoCurve.jpeg", width = 600, height = 600)
+
 grid.arrange(g1, g2, g3)
+
+dev.off()
 
 # Add semicircle distribution densities
 g1 <- g1 +
@@ -59,6 +63,10 @@ g2 <- g2 +
 g3 <- g3 +
   stat_function(fun = dsemicircle, args = list(R = 2), lwd = 1.5, color = "red")
 
+jpeg("Plots/SemiLaw.jpeg", width = 600, height = 600)
+
 grid.arrange(g1, g2, g3)
+
+dev.off()
 
 # Wigner's semicircle law is verified!

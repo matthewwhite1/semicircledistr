@@ -30,6 +30,8 @@ labels <- c(label0.25, label0.5, label1, label2, label3)
 pdf_df <- data.frame(xs = xs, values = values, labels = labels)
 
 # Plot
+jpeg("Plots/PDF_plot.jpeg", width = 600, height = 600)
+
 ggplot(pdf_df, aes(xs, values, color = labels)) +
   geom_line(lwd = 1) +
   scale_color_manual(values = c("blue", "green", "red", "cyan", "purple")) +
@@ -40,6 +42,8 @@ ggplot(pdf_df, aes(xs, values, color = labels)) +
   theme(plot.title = element_text(hjust = 0.5),
         legend.position = c(0.9, 0.83),
         legend.title = element_blank())
+
+dev.off()
 
 # Demonstrate "a" parameter
 x_shift <- seq(-5, 5, by = 0.01)
@@ -61,6 +65,8 @@ labels_shift <- c(label1_shift, label2_shift, label3_shift)
 pdf_df_shift <- data.frame(xs = xs_shift, values = values_shift, labels = labels_shift)
 
 # Plot
+jpeg("Plots/PDF_plot_shift.jpeg", width = 600, height = 600)
+
 ggplot(pdf_df_shift, aes(xs, values, color = labels)) +
   geom_line(lwd = 1) +
   scale_color_manual(values = c("red", "cyan", "purple")) +
@@ -70,3 +76,5 @@ ggplot(pdf_df_shift, aes(xs, values, color = labels)) +
   theme(plot.title = element_text(hjust = 0.5),
         legend.position = c(0.8, 0.8),
         legend.title = element_blank())
+
+dev.off()

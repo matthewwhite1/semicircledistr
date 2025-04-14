@@ -3,6 +3,8 @@
 ## https://en.wikipedia.org/wiki/Wigner_semicircle_distribution
 ################################################################################
 
+jpeg("Plots/CDF_plot.jpeg", width = 600, height = 600)
+
 colors <- c("red", "orange", "gold", "green", "cyan", "blue")
 
 radii <- c(0.25, 0.5, 1, 1.5, 2, 3)
@@ -26,3 +28,5 @@ for (r in radii) {
   i <- i + 1
 }
 legend("topleft", as.character(radii), fill=colors)
+
+dev.off()

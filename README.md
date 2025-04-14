@@ -8,45 +8,89 @@
 [![R-CMD-check](https://github.com/matthewwhite1/semicircledistr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/matthewwhite1/semicircledistr/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of semicircledistr is to …
+The goal of semicircledistr is to simulate the Wigner semicircle
+distribution. This package includes the four main distribution
+simulation functions that other distributions in R have.
 
 ## Installation
 
 You can install the development version of semicircledistr like so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+devtools::install_github("https://github.com/matthewwhite1/semicircledistr")
 ```
 
-## Example
+## Using the Four Functions
 
-This is a basic example which shows you how to solve a common problem:
+Here are some examples of how to use the four main functions included in
+this package:
 
 ``` r
 library(semicircledistr)
-## basic example code
+
+# Using dsemicircle
+dsemicircle(0, R = 1)
+#> [1] 0.6366198
+dsemicircle(c(0, 0.5, 1), R = 1)
+#> [1] 0.6366198 0.5513289 0.0000000
+
+# Using psemicircle
+psemicircle(0, R = 1)
+#> [1] 0.5
+psemicircle(c(0, 0.5, 1), R = 1)
+#> [1] 0.5000000 0.8044989 1.0000000
+
+# Using qsemicircle
+qsemicircle(0.5, R = 1)
+#> [1] 0
+qsemicircle(c(0.1, 0.5, 0.9), R = 1)
+#> [1] -0.6870235  0.0000000  0.6870235
+
+# Using rsemicircle
+rsemicircle(10, R = 1)
+#>  [1]  0.7627204  0.5748772  0.3302814 -0.8209439 -0.0152717  0.2468693
+#>  [7]  0.3961329 -0.6714779  0.4874780 -0.5090006
+rsemicircle(5, R = 1)
+#> [1]  0.7277614 -0.1893701  0.2399207  0.1926346 -0.0895170
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+## Plots
 
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
+Here are some plots that can be created with our functions, similar to
+the plots found in Wikipedia. The code for creating these plots can be
+found in the Scripts folder.
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this.
+<figure>
+<img src="Plots/PDF_plot.jpeg"
+alt="Probability density function plot created with dsemicircle." />
+<figcaption aria-hidden="true">Probability density function plot created
+with dsemicircle.</figcaption>
+</figure>
 
-You can also embed plots, for example:
+<figure>
+<img src="Plots/PDF_plot_shift.jpeg"
+alt="Probability density function plot with shift parameter." />
+<figcaption aria-hidden="true">Probability density function plot with
+shift parameter.</figcaption>
+</figure>
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+<figure>
+<img src="Plots/CDF_plot.jpeg"
+alt="Cumulative distribution function plot created with psemicircle." />
+<figcaption aria-hidden="true">Cumulative distribution function plot
+created with psemicircle.</figcaption>
+</figure>
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+<figure>
+<img src="Plots/QQ_plot.jpeg"
+alt="QQ plot created with rsemicircle and qsemicircle." />
+<figcaption aria-hidden="true">QQ plot created with rsemicircle and
+qsemicircle.</figcaption>
+</figure>
+
+<figure>
+<img src="Plots/SemiLaw.jpeg"
+alt="Histograms of random matrix eigenvalues to demonstrate Wigner’s semicircle law." />
+<figcaption aria-hidden="true">Histograms of random matrix eigenvalues
+to demonstrate Wigner’s semicircle law.</figcaption>
+</figure>
