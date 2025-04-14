@@ -48,10 +48,10 @@ qsemicircle(c(0.1, 0.5, 0.9), R = 1)
 
 # Using rsemicircle
 rsemicircle(10, R = 1)
-#>  [1] -0.06894547 -0.80812054  0.32492108 -0.03369269 -0.08459447  0.95244419
-#>  [7] -0.32522422  0.25409747 -0.17635066  0.31298825
+#>  [1]  0.7725256  0.9213324 -0.1445707  0.6028919  0.5904718  0.6907625
+#>  [7]  0.5364911 -0.4269939 -0.2392605 -0.1947488
 rsemicircle(5, R = 1)
-#> [1]  0.05093109  0.58158149  0.45272481  0.10120910 -0.07716872
+#> [1] -0.4082351 -0.4023014 -0.1614472 -0.1564876 -0.8230285
 ```
 
 ## Plots
@@ -67,9 +67,10 @@ alt="Probability density function plot created with dsemicircle." />
 with dsemicircle.</figcaption>
 </figure>
 
-<div style="margin-bottom: 40px;">
+<p>
 
-</div>
+ 
+</p>
 
 <figure>
 <img src="Plots/PDF_plot_shift.jpeg"
@@ -78,9 +79,10 @@ alt="Probability density function plot with shift parameter." />
 shift parameter.</figcaption>
 </figure>
 
-<div style="margin-bottom: 40px;">
+<p>
 
-</div>
+ 
+</p>
 
 <figure>
 <img src="Plots/CDF_plot.jpeg"
@@ -89,9 +91,10 @@ alt="Cumulative distribution function plot created with psemicircle." />
 created with psemicircle.</figcaption>
 </figure>
 
-<div style="margin-bottom: 40px;">
+<p>
 
-</div>
+ 
+</p>
 
 <figure>
 <img src="Plots/QQ_plot.jpeg"
@@ -100,9 +103,10 @@ alt="QQ plot created with rsemicircle and qsemicircle." />
 qsemicircle.</figcaption>
 </figure>
 
-<div style="margin-bottom: 40px;">
+<p>
 
-</div>
+ 
+</p>
 
 <figure>
 <img src="Plots/SemiLaw.jpeg"
