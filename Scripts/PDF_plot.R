@@ -5,6 +5,7 @@
 
 library(ggplot2)
 library(dplyr)
+library(RColorBrewer)
 
 # Create dataframe for plotting
 x <- seq(-3, 3, by = 0.01)
@@ -34,8 +35,7 @@ jpeg("Plots/PDF_plot.jpeg", width = 600, height = 600)
 
 ggplot(pdf_df, aes(xs, values, color = labels)) +
   geom_line(lwd = 1) +
-  scale_color_manual(values = c("blue", "green", "red", "cyan", "purple")) +
-  theme_bw() +
+  scale_color_brewer(palette = "RdYlBu") +
   scale_x_continuous("", breaks = seq(-3, 3, by = 1)) +
   scale_y_continuous("", breaks = seq(0, 2.5, by = 0.5), limits = c(0, 2.6)) +
   ggtitle("Probability Density Function") +
@@ -67,10 +67,11 @@ pdf_df_shift <- data.frame(xs = xs_shift, values = values_shift, labels = labels
 # Plot
 jpeg("Plots/PDF_plot_shift.jpeg", width = 600, height = 600)
 
+colors <- brewer.pal(5, "RdYlBu")[3:5]
+
 ggplot(pdf_df_shift, aes(xs, values, color = labels)) +
   geom_line(lwd = 1) +
-  scale_color_manual(values = c("red", "cyan", "purple")) +
-  theme_bw() +
+  scale_color_manual(values = colors) +
   scale_x_continuous("", breaks = seq(-5, 5, by = 1)) +
   ylab("") +
   theme(plot.title = element_text(hjust = 0.5),
