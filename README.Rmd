@@ -62,12 +62,20 @@ Here are some plots that can be created with our functions, similar to the
 plots found in Wikipedia. The code for creating these plots can be found
 in the Scripts folder.
 
-![Probability density function plot created with dsemicircle.](Plots/PDF_plot.jpeg)  
+![Probability density function plot created with dsemicircle.](Plots/PDF_plot.jpeg)
 
-![Probability density function plot with shift parameter.](Plots/PDF_plot_shift.jpeg)  
+<div style="margin-bottom: 40px;"></div>
 
-![Cumulative distribution function plot created with psemicircle.](Plots/CDF_plot.jpeg)  
+![Probability density function plot with shift parameter.](Plots/PDF_plot_shift.jpeg)
 
-![QQ plot created with rsemicircle and qsemicircle.](Plots/QQ_plot.jpeg)  
+<div style="margin-bottom: 40px;"></div>
+
+![Cumulative distribution function plot created with psemicircle.](Plots/CDF_plot.jpeg)
+
+<div style="margin-bottom: 40px;"></div>
+
+![QQ plot created with rsemicircle and qsemicircle.](Plots/QQ_plot.jpeg)
+
+<div style="margin-bottom: 40px;"></div>
 
 ![Histograms of random matrix eigenvalues to demonstrate Wigner's semicircle law.](Plots/SemiLaw.jpeg) 
