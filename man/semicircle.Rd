@@ -2,6 +2,10 @@
 % Please edit documentation in R/semicircle.R
 \name{semicircle}
 \alias{semicircle}
+\alias{dsemicircle}
+\alias{psemicircle}
+\alias{qsemicircle}
+\alias{rsemicircle}
 \title{Wigner Semicircle Distribution}
 \usage{
 dsemicircle(x, R, a = 0)
@@ -50,21 +54,37 @@ The quantile function gives the smallest value \code{x} such that the cumulative
 \examples{
 # Compute the density at x = 0 for a semicircle with radius 1
 dsemicircle(0, R = 1)
+# Compute the density for a few x values for a semicircle with radius 2
+# shifted 2 to the right
+dsemicircle(c(2, 3, 4), R = 2, a = 2)
 
 # Compute the cumulative probability at x = 0 for a semicircle with radius 1
 psemicircle(0, R = 1)
+# Compute the cumulative probability for a few x values for a semicircle with
+# radius 2 shifted 2 to the right
+psemicircle(c(2, 3, 4), R = 2, a = 2)
 
 # Compute the quantile for probability p = 0.75 for a semicircle with radius 1
 qsemicircle(0.75, R = 1)
+# Compute the quantile for a few probabilities for a semicircle with radius 2
+# shifted 2 to the right
+qsemicircle(c(0.25, 0.5, 0.75), R = 2, a = 2)
 
 # Generate 1000 random samples from a semicircle with radius 1
 random_samples <- rsemicircle(1000, R = 1)
-hist(random_samples, breaks = 30, main = "Random Samples from Semicircle Distribution", xlab = "Value", ylab = "Frequency")
+hist(random_samples,
+  breaks = 30, main = "Random Samples from Semicircle Distribution",
+  xlab = "Value", ylab = "Frequency"
+)
+# Generate 1000 random samples from a semicircle with radius 2 shifted 2
+# to the right
+random_samples <- rsemicircle(1000, R = 2, a = 2)
+hist(random_samples,
+  breaks = 30, main = "Random Samples from Semicircle Distribution",
+  xlab = "Value", ylab = "Frequency"
+)
 
 }
 \references{
 \url{https://en.wikipedia.org/wiki/Wigner_semicircle_distribution}
-}
-\seealso{
-\code{\link{dsemicircle}}, \code{\link{psemicircle}}, \code{\link{qsemicircle}}, \code{\link{rsemicircle}}
 }

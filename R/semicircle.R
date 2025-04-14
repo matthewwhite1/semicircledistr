@@ -7,6 +7,7 @@
 #' This distribution is used to model random variables that follow the shape of a semicircle.
 #'
 #' @name semicircle
+#' @aliases dsemicircle psemicircle qsemicircle rsemicircle
 #' @usage
 #' dsemicircle(x, R, a = 0)
 #' psemicircle(x, R, a = 0)
@@ -39,21 +40,38 @@
 #'   \item{\code{rsemicircle}}{Returns random samples from the semicircle distribution.}
 #' }
 #'
-#' @seealso \code{\link{dsemicircle}}, \code{\link{psemicircle}}, \code{\link{qsemicircle}}, \code{\link{rsemicircle}}
-#'
 #' @examples
 #' # Compute the density at x = 0 for a semicircle with radius 1
 #' dsemicircle(0, R = 1)
+#' # Compute the density for a few x values for a semicircle with radius 2
+#' # shifted 2 to the right
+#' dsemicircle(c(2, 3, 4), R = 2, a = 2)
 #'
 #' # Compute the cumulative probability at x = 0 for a semicircle with radius 1
 #' psemicircle(0, R = 1)
+#' # Compute the cumulative probability for a few x values for a semicircle with
+#' # radius 2 shifted 2 to the right
+#' psemicircle(c(2, 3, 4), R = 2, a = 2)
 #'
 #' # Compute the quantile for probability p = 0.75 for a semicircle with radius 1
 #' qsemicircle(0.75, R = 1)
+#' # Compute the quantile for a few probabilities for a semicircle with radius 2
+#' # shifted 2 to the right
+#' qsemicircle(c(0.25, 0.5, 0.75), R = 2, a = 2)
 #'
 #' # Generate 1000 random samples from a semicircle with radius 1
 #' random_samples <- rsemicircle(1000, R = 1)
-#' hist(random_samples, breaks = 30, main = "Random Samples from Semicircle Distribution", xlab = "Value", ylab = "Frequency")
+#' hist(random_samples,
+#'   breaks = 30, main = "Random Samples from Semicircle Distribution",
+#'   xlab = "Value", ylab = "Frequency"
+#' )
+#' # Generate 1000 random samples from a semicircle with radius 2 shifted 2
+#' # to the right
+#' random_samples <- rsemicircle(1000, R = 2, a = 2)
+#' hist(random_samples,
+#'   breaks = 30, main = "Random Samples from Semicircle Distribution",
+#'   xlab = "Value", ylab = "Frequency"
+#' )
 #'
 #' @references
 #' \url{https://en.wikipedia.org/wiki/Wigner_semicircle_distribution}
@@ -61,16 +79,6 @@
 #' @importFrom stats uniroot
 NULL
 
-#' @title Density of the Semicircle Distribution
-#' @description Computes the density of the semicircle distribution at `x` given a radius `R` and shift `a`.
-#' @param x A numeric vector of quantiles.
-#' @param R The radius of the semicircle.
-#' @param a The shift parameter (default is 0).
-#' @return A numeric vector with the density values for each input value of `x`.
-#' @examples
-#' dsemicircle(0, R = 1)
-#' dsemicircle(c(0, 0.5, 1), R = 1)
-#' @seealso \code{\link{semicircle}} for the full documentation on the Wigner semicircle distribution.
 #' @export
 dsemicircle <- function(x, R, a = 0) {
   if (!is.numeric(x)) {
@@ -85,16 +93,6 @@ dsemicircle <- function(x, R, a = 0) {
   ifelse(abs(x - a) > R, 0, (2 / (pi * R^2)) * sqrt(R^2 - (x - a)^2))
 }
 
-#' @title Cumulative Probability of the Semicircle Distribution
-#' @description Computes the cumulative probability for the semicircle distribution at `x`.
-#' @param x A numeric vector of quantiles.
-#' @param R The radius of the semicircle.
-#' @param a The shift parameter (default is 0).
-#' @return A numeric vector with the cumulative probability values for each input value of `x`.
-#' @examples
-#' psemicircle(0, R = 1)
-#' psemicircle(c(0, 0.5, 1), R = 1)
-#' @seealso \code{\link{semicircle}} for the full documentation on the Wigner semicircle distribution.
 #' @export
 psemicircle <- function(x, R, a = 0) {
   if (!is.numeric(x)) {
@@ -117,16 +115,6 @@ psemicircle <- function(x, R, a = 0) {
   return(result)
 }
 
-#' @title Quantiles of the Semicircle Distribution
-#' @description Computes the quantile corresponding to the probability `p` for the semicircle distribution.
-#' @param p A numeric vector of probabilities.
-#' @param R The radius of the semicircle.
-#' @param a The shift parameter (default is 0).
-#' @return A numeric vector with the quantiles corresponding to the probabilities `p`.
-#' @examples
-#' qsemicircle(0.5, R = 1)
-#' qsemicircle(c(0.1, 0.5, 0.9), R = 1)
-#' @seealso \code{\link{semicircle}} for the full documentation on the Wigner semicircle distribution.
 #' @export
 qsemicircle <- function(p, R, a = 0) {
   if (!is.numeric(p) || any(p < 0) || any(p > 1)) {
@@ -149,16 +137,6 @@ qsemicircle <- function(p, R, a = 0) {
   quantile_fn(p)
 }
 
-#' @title Random Samples from the Semicircle Distribution
-#' @description Generates `n` random samples from the semicircle distribution with radius `R` and shift `a`.
-#' @param n The number of random samples to generate.
-#' @param R The radius of the semicircle.
-#' @param a The shift parameter (default is 0).
-#' @return A numeric vector with `n` random samples from the semicircle distribution.
-#' @examples
-#' rsemicircle(10, R = 1)
-#' rsemicircle(5, R = 1)
-#' @seealso \code{\link{semicircle}} for the full documentation on the Wigner semicircle distribution.
 #' @export
 rsemicircle <- function(n, R, a = 0) {
   if (!is.numeric(n) || n != round(n)) {
@@ -170,6 +148,6 @@ rsemicircle <- function(n, R, a = 0) {
   if (!is.numeric(a)) {
     stop("a must be numeric.")
   }
-  u <- runif(n)  # generate n uniform values between 0 and 1
+  u <- stats::runif(n)  # generate n uniform values between 0 and 1
   qsemicircle(u, R, a)  # apply the inverse CDF (quantile function)
 }
