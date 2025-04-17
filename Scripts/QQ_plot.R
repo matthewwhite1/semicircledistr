@@ -9,9 +9,19 @@ radii <- c(0.75, 2)
 for (i in radii) {
   random <- sort(rsemicircle(1000, i))
   theoretical <- qsemicircle(ppoints(1000), i)
-  qqplot(random, theoretical, main=paste("QQ Plot of rsemicircle vs theoretical for R = ", i), xlab="rsemicircle", ylab="Theoretical", cex=2)
+  lims = c(-i, i)
+  ats = seq(-i, i, i / 2)
+  qqplot(theoretical,
+         random,
+         main=paste("QQ Plot of rsemicircle vs theoretical for R = ", i),
+         xlab="Theoretical",
+         ylab="rsemicircle",
+         xlim=lims,
+         ylim=lims,
+         at=ats,
+         cex=2)
   abline(0,1, col="red", lwd=2)
 }
 
 ## Uncomment to export image
-## dev.print(png, "rsemicircle-qq.png", width=720)
+## dev.print(png, "rsemicircle-qq.png", width=720, height=1440)
