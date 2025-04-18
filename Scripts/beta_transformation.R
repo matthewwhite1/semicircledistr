@@ -48,7 +48,11 @@ g3 <- ggplot(U3_df, aes(U3_vals)) +
   scale_y_continuous("Density", breaks = seq(0, 0.4, by = 0.1), limits = c(0, 0.4)) +
   xlab("Transformed Beta Distribution Values for n = 100000")
 
+jpeg("Plots/BetaTrans_NoCurve.jpeg", width = 600, height = 600)
+
 grid.arrange(g1, g2, g3)
+
+dev.off()
 
 # Add semicircle distribution densities
 g1 <- g1 +
@@ -60,7 +64,13 @@ g2 <- g2 +
 g3 <- g3 +
   stat_function(fun = dsemicircle, args = R, lwd = 1.5, color = "red")
 
+jpeg("Plots/BetaTrans.jpeg", width = 600, height = 600)
+
 grid.arrange(g1, g2, g3)
+
+dev.off()
+
+jpeg("Plots/BetaTrans_QQ.jpeg", width = 600, height = 600)
 
 # Check with a QQ plot
 par(mfrow = c(3, 1))
@@ -79,5 +89,7 @@ theoretical3 <- qsemicircle(ppoints(100000), R)
 qqplot(U3, theoretical3, main = "QQ Plot of Shifted Beta vs Theoretical Semicircle for n = 100000",
        xlab = "Shifted Beta", ylab = "Theoretical Semicircle", cex = 2)
 abline(a = 0, b = 1, col = "red")
+
+dev.off()
 
 # The claim seems to be confirmed!

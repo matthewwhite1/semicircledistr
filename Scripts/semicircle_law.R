@@ -13,6 +13,9 @@ library(gridExtra)
 # Stopping at 5000 instead of 10000 to save on computation time
 set.seed(1234)
 
+random_matrix_example <- matrix(data = rnorm(25), 5, 5)
+random_matrix_example
+
 # GOE stands for Gaussian Orthogonal Ensemble
 # I realized afterwards that I am not sure if these matrices count as
 # GOEs, but I don't want to take the time to rerun the code right now

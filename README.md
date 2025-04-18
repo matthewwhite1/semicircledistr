@@ -29,30 +29,54 @@ this package:
 library(semicircledistr)
 
 # Using dsemicircle
+# Compute the density at x = 0 for a semicircle with radius 1
 dsemicircle(0, R = 1)
 #> [1] 0.6366198
-dsemicircle(c(0, 0.5, 1), R = 1)
-#> [1] 0.6366198 0.5513289 0.0000000
+# Compute the density for a few x values for a semicircle with radius 2
+# shifted 2 to the right
+dsemicircle(c(2, 3, 4), R = 2, a = 2)
+#> [1] 0.3183099 0.2756644 0.0000000
 
 # Using psemicircle
+# Compute the cumulative probability at x = 0 for a semicircle with radius 1
 psemicircle(0, R = 1)
 #> [1] 0.5
-psemicircle(c(0, 0.5, 1), R = 1)
+# Compute the cumulative probability for a few x values for a semicircle with
+# radius 2 shifted 2 to the right
+psemicircle(c(2, 3, 4), R = 2, a = 2)
 #> [1] 0.5000000 0.8044989 1.0000000
 
 # Using qsemicircle
-qsemicircle(0.5, R = 1)
-#> [1] 0
-qsemicircle(c(0.1, 0.5, 0.9), R = 1)
-#> [1] -0.6870235  0.0000000  0.6870235
+# Compute the quantile for probability p = 0.75 for a semicircle with radius 1
+qsemicircle(0.75, R = 1)
+#> [1] 0.4039794
+# Compute the quantile for a few probabilities for a semicircle with radius 2
+# shifted 2 to the right
+qsemicircle(c(0.25, 0.5, 0.75), R = 2, a = 2)
+#> [1] 1.192041 2.000000 2.807959
 
 # Using rsemicircle
-rsemicircle(10, R = 1)
-#>  [1] -0.41713379  0.79970979  0.08377596 -0.27606542 -0.61438911 -0.18401899
-#>  [7] -0.62733781  0.93406961 -0.67900528 -0.13452026
-rsemicircle(5, R = 1)
-#> [1] -0.72350714  0.88322619  0.39755984  0.02123843  0.06805424
+# Generate 1000 random samples from a semicircle with radius 1
+random_samples <- rsemicircle(1000, R = 1)
+hist(random_samples,
+  breaks = 30, main = "Random Samples from Semicircle Distribution",
+  xlab = "Value", ylab = "Frequency"
+)
 ```
+
+<img src="man/figures/README-example-1.png" width="100%" />
+
+``` r
+# Generate 1000 random samples from a semicircle with radius 2 shifted 2
+# to the right
+random_samples <- rsemicircle(1000, R = 2, a = 2)
+hist(random_samples,
+  breaks = 30, main = "Random Samples from Semicircle Distribution",
+  xlab = "Value", ylab = "Frequency"
+)
+```
+
+<img src="man/figures/README-example-2.png" width="100%" />
 
 ## Plots
 

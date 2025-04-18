@@ -3,7 +3,13 @@
 ## https://en.wikipedia.org/wiki/Wigner_semicircle_distribution
 ################################################################################
 
-colors <- hcl.colors(6, "Dark 3")
+library(RColorBrewer)
+
+jpeg("Plots/CDF_plot.jpeg", width = 600, height = 600)
+
+# colors <- hcl.colors(6, "Dark 3")
+
+colors <- brewer.pal(6, "Dark2")
 
 radii <- c(0.25, 0.5, 1, 1.5, 2, 3)
 i <- 1
@@ -30,6 +36,8 @@ for (r in radii) {
 }
 
 legend("topleft", as.character(radii), fill=colors, title="Radius")
+
+dev.off()
 
 ## Uncomment to export image
 ## dev.print(png, "cdf.png", width=1440)
