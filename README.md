@@ -134,7 +134,7 @@ qsemicircle.</figcaption>
 
 <figure>
 <img src="Plots/SemiLaw.jpeg"
-alt="Histograms of random matrix eigenvalues to demonstrate Wigner’s semicircle law." />
-<figcaption aria-hidden="true">Histograms of random matrix eigenvalues
-to demonstrate Wigner’s semicircle law.</figcaption>
+alt="Histograms of Gaussian random matrix eigenvalues to demonstrate Wigner’s semicircle law." />
+<figcaption aria-hidden="true">Histograms of Gaussian random matrix
+eigenvalues to demonstrate Wigner’s semicircle law.</figcaption>
 </figure>
