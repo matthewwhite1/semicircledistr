@@ -127,10 +127,10 @@ qsemicircle <- function(p, R, a = 0) {
     stop("a must be numeric.")
   }
   quantile_fn <- function(prob) {
-    sapply(prob, function(pi) {
-      if (pi == 0) return(a - R)
-      if (pi == 1) return(a + R)
-      uniroot(function(x) psemicircle(x, R, a) - pi,
+    sapply(prob, function(p) {
+      if (p == 0) return(a - R)
+      if (p == 1) return(a + R)
+      uniroot(function(x) psemicircle(x, R, a) - p,
               lower = a - R, upper = a + R)$root
     })
   }
