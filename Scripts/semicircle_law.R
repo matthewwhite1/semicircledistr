@@ -7,68 +7,77 @@
 
 library(ggplot2)
 library(pracma) # for random matrices
-library(gridExtra)
+library(patchwork)
 
 # Create 3 N by N random matrices
 # Stopping at 5000 instead of 10000 to save on computation time
 set.seed(1234)
 
-random_matrix_example <- matrix(data = rnorm(25), 5, 5)
-random_matrix_example
+norm_1000 <- randn(1000)
+norm_1000_sym <- (norm_1000 + t(norm_1000)) / sqrt(2 * 1000)
+ev_1000 <- eigen(norm_1000_sym)
+ev_1000_df <- data.frame(ev = ev_1000$values)
 
-# GOE stands for Gaussian Orthogonal Ensemble
-# I realized afterwards that I am not sure if these matrices count as
-# GOEs, but I don't want to take the time to rerun the code right now
-goe_1000 <- randn(1000)
-ev_1000 <- eigen(goe_1000)
-ev_1000_data <- scale(as.numeric(ev_1000$values))
-ev_1000_df <- data.frame(ev = ev_1000_data)
+norm_2500 <- randn(2500)
+norm_2500_sym <- (norm_2500 + t(norm_2500)) / sqrt(2 * 2500)
+ev_2500 <- eigen(norm_2500_sym)
+ev_2500_df <- data.frame(ev = ev_2500$values)
 
-goe_2500 <- randn(2500)
-ev_2500 <- eigen(goe_2500)
-ev_2500_data <- scale(as.numeric(ev_2500$values))
-ev_2500_df <- data.frame(ev = ev_2500_data)
-
-goe_5000 <- randn(5000)
-ev_5000 <- eigen(goe_5000) # This takes a few minutes to run
-ev_5000_data <- scale(as.numeric(ev_5000$values))
-ev_5000_df <- data.frame(ev = ev_5000_data)
+norm_5000 <- randn(5000)
+norm_5000_sym <- (norm_5000 + t(norm_5000)) / sqrt(2 * 5000)
+ev_5000 <- eigen(norm_5000_sym) # This takes a few minutes to run
+ev_5000_df <- data.frame(ev = ev_5000$values)
 
 # Create histograms
 g1 <- ggplot(ev_1000_df, aes(ev)) +
-  geom_histogram(aes(y = after_stat(density)), breaks = seq(-2.1, 2, by = 0.1)) +
-  scale_y_continuous("Density", breaks = seq(0, 0.5, by = 0.1), limits = c(0, 0.5)) +
+  geom_histogram(aes(y = after_stat(density)), breaks = seq(-2, 2, by = 0.1)) +
   xlab("Scaled Eigenvalues for N = 1000")
 
 g2 <- ggplot(ev_2500_df, aes(ev)) +
-  geom_histogram(aes(y = after_stat(density)), breaks = seq(-2.1, 2, by = 0.1)) +
-  scale_y_continuous("Density", breaks = seq(0, 0.5, by = 0.1), limits = c(0, 0.5)) +
+  geom_histogram(aes(y = after_stat(density)), breaks = seq(-2, 2, by = 0.1)) +
   xlab("Scaled Eigenvalues for N = 2500")
 
 g3 <- ggplot(ev_5000_df, aes(ev)) +
-  geom_histogram(aes(y = after_stat(density)), breaks = seq(-2.1, 2, by = 0.1)) +
-  scale_y_continuous("Density", breaks = seq(0, 0.5, by = 0.1), limits = c(0, 0.5)) +
+  geom_histogram(aes(y = after_stat(density)), breaks = seq(-2, 2, by = 0.1)) +
   xlab("Scaled Eigenvalues for N = 5000")
 
 jpeg("Plots/SemiLaw_NoCurve.jpeg", width = 600, height = 600)
 
-grid.arrange(g1, g2, g3)
+g1 /
+  g2 /
+  g3 + plot_annotation(
+    title = expression(paste("Normal Distribution with ", mu, " = 0 and ", sigma, " = 1")),
+    theme = theme(plot.title = element_text(hjust = 0.5))
+  ) &
+  scale_y_continuous("Density",
+    breaks = seq(0, 0.4, by = 0.1),
+    limits = c(0, 0.4)
+  )
 
 dev.off()
 
 # Add semicircle distribution densities
 g1 <- g1 +
-  stat_function(fun = dsemicircle, args = list(R = 2), lwd = 1.5, color = "red")
+  stat_function(fun = dsemicircle, args = list(R = 2), lwd = 1, color = "red")
 
 g2 <- g2 +
-  stat_function(fun = dsemicircle, args = list(R = 2), lwd = 1.5, color = "red")
+  stat_function(fun = dsemicircle, args = list(R = 2), lwd = 1, color = "red")
 
 g3 <- g3 +
-  stat_function(fun = dsemicircle, args = list(R = 2), lwd = 1.5, color = "red")
+  stat_function(fun = dsemicircle, args = list(R = 2), lwd = 1, color = "red")
 
 jpeg("Plots/SemiLaw.jpeg", width = 600, height = 600)
 
-grid.arrange(g1, g2, g3)
+g1 /
+  g2 /
+  g3 + plot_annotation(
+    title = expression(paste("Normal Distribution with ", mu, " = 0 and ", sigma, " = 1")),
+    theme = theme(plot.title = element_text(hjust = 0.5))
+  ) &
+  scale_y_continuous("Density",
+                     breaks = seq(0, 0.4, by = 0.1),
+                     limits = c(0, 0.4)
+  )
 
 dev.off()
 
