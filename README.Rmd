@@ -98,4 +98,4 @@ in the Scripts folder.
 
 <p>&nbsp;</p>
 
-![Histograms of random matrix eigenvalues to demonstrate Wigner's semicircle law.](Plots/SemiLaw.jpeg) 
+![Histograms of Gaussian random matrix eigenvalues to demonstrate Wigner's semicircle law.](Plots/SemiLaw.jpeg) 
